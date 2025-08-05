@@ -1,0 +1,34 @@
+{
+    "name": "CustomAction",
+    "maps": [
+        {
+            "name": "Main",
+            "id": "1483ad41-fadb-4282-bf7f-5ec074484756",
+            "actions": [
+                {
+                    "name": "Moove",
+                    "type": "Button",
+                    "id": "ab03b444-ca23-412c-ab61-3a8fda823628",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "637098c7-0ba1-4b85-9159-5770703d0fda",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Moove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
