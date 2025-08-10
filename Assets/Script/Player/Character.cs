@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
             Debug.Log("Coup critique !");
         }
 
-        cible.stats.PrendreDegats(degats, false);
+        cible.stats.TakeDamage(degats, false);
     }
 
     public void LancerSort(Character cible)
@@ -43,6 +43,6 @@ public class Character : MonoBehaviour
             Debug.Log("Coup critique magique !");
         }
 
-        cible.stats.PrendreDegats(degats, true);
+        cible.stats.TakeDamage(degats, true);
     }
 }

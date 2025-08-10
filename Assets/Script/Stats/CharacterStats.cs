@@ -24,7 +24,7 @@ public class CharacterStats
     public float regenVieParSeconde = 1f;
 
     // Méthode pour recevoir des dégâts
-    public void PrendreDegats(float degats, bool estMagique)
+    public void TakeDamage(float degats, bool estMagique = false)
     {
         float defense = estMagique ? defenseMagique : defensePhysique;
         float degatsReels = Mathf.Max(0, degats - defense);

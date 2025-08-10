@@ -62,8 +62,9 @@ public class Ennemi : MonoBehaviour
             Character character = player.GetComponent<Character>();
             if (character != null)
             {
-                character.stats.PrendreDegats(10, false);
+                character.stats.TakeDamage(10, false);
             }
         }
     }
+
 }
