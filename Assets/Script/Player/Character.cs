@@ -1,13 +1,24 @@
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.TextCore.Text;
 
 public class Character : MonoBehaviour
 {
     public CharacterStats stats;
+    private NavMeshAgent agent;
 
     private void Update()
     {
         stats.RegenererVie();
+        agent.speed = stats.vitesseDeplacement;
     }
+
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = stats.vitesseDeplacement;
+    }
+
 
     public void Attaquer(Character cible)
     {
