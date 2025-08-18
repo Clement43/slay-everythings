@@ -92,13 +92,49 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
             ""id"": ""1483ad41-fadb-4282-bf7f-5ec074484756"",
             ""actions"": [
                 {
+                    ""name"": ""QSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""0015641b-d34d-4483-9b36-70b16028ba44"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ZSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""6520fc06-7b96-4f18-bba5-65d85eeb2c11"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ESpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""75f0bf67-3f8d-42e8-93ad-be22c3b4a321"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""22558618-6fdd-47a7-bf5e-3262b45b4fd3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Moove"",
                     ""type"": ""Button"",
                     ""id"": ""ab03b444-ca23-412c-ab61-3a8fda823628"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -112,6 +148,50 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
                     ""action"": ""Moove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""072c8b41-db70-4da7-808e-d41afff51a61"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60f417e0-b430-46f6-8481-7e046deca87f"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""549108d4-80a0-4d9c-9773-9dee35466aac"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ESpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7f1cd93-8eac-49d2-aaea-a72b53cbe77b"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +200,10 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
 }");
         // Main
         m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
+        m_Main_QSpell = m_Main.FindAction("QSpell", throwIfNotFound: true);
+        m_Main_ZSpell = m_Main.FindAction("ZSpell", throwIfNotFound: true);
+        m_Main_ESpell = m_Main.FindAction("ESpell", throwIfNotFound: true);
+        m_Main_RSpell = m_Main.FindAction("RSpell", throwIfNotFound: true);
         m_Main_Moove = m_Main.FindAction("Moove", throwIfNotFound: true);
     }
 
@@ -201,6 +285,10 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
     // Main
     private readonly InputActionMap m_Main;
     private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
+    private readonly InputAction m_Main_QSpell;
+    private readonly InputAction m_Main_ZSpell;
+    private readonly InputAction m_Main_ESpell;
+    private readonly InputAction m_Main_RSpell;
     private readonly InputAction m_Main_Moove;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
@@ -213,6 +301,22 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
         public MainActions(@CustomAction wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Main/QSpell".
+        /// </summary>
+        public InputAction @QSpell => m_Wrapper.m_Main_QSpell;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/ZSpell".
+        /// </summary>
+        public InputAction @ZSpell => m_Wrapper.m_Main_ZSpell;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/ESpell".
+        /// </summary>
+        public InputAction @ESpell => m_Wrapper.m_Main_ESpell;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/RSpell".
+        /// </summary>
+        public InputAction @RSpell => m_Wrapper.m_Main_RSpell;
         /// <summary>
         /// Provides access to the underlying input action "Main/Moove".
         /// </summary>
@@ -243,6 +347,18 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MainActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MainActionsCallbackInterfaces.Add(instance);
+            @QSpell.started += instance.OnQSpell;
+            @QSpell.performed += instance.OnQSpell;
+            @QSpell.canceled += instance.OnQSpell;
+            @ZSpell.started += instance.OnZSpell;
+            @ZSpell.performed += instance.OnZSpell;
+            @ZSpell.canceled += instance.OnZSpell;
+            @ESpell.started += instance.OnESpell;
+            @ESpell.performed += instance.OnESpell;
+            @ESpell.canceled += instance.OnESpell;
+            @RSpell.started += instance.OnRSpell;
+            @RSpell.performed += instance.OnRSpell;
+            @RSpell.canceled += instance.OnRSpell;
             @Moove.started += instance.OnMoove;
             @Moove.performed += instance.OnMoove;
             @Moove.canceled += instance.OnMoove;
@@ -257,6 +373,18 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
         /// <seealso cref="MainActions" />
         private void UnregisterCallbacks(IMainActions instance)
         {
+            @QSpell.started -= instance.OnQSpell;
+            @QSpell.performed -= instance.OnQSpell;
+            @QSpell.canceled -= instance.OnQSpell;
+            @ZSpell.started -= instance.OnZSpell;
+            @ZSpell.performed -= instance.OnZSpell;
+            @ZSpell.canceled -= instance.OnZSpell;
+            @ESpell.started -= instance.OnESpell;
+            @ESpell.performed -= instance.OnESpell;
+            @ESpell.canceled -= instance.OnESpell;
+            @RSpell.started -= instance.OnRSpell;
+            @RSpell.performed -= instance.OnRSpell;
+            @RSpell.canceled -= instance.OnRSpell;
             @Moove.started -= instance.OnMoove;
             @Moove.performed -= instance.OnMoove;
             @Moove.canceled -= instance.OnMoove;
@@ -300,6 +428,34 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
     /// <seealso cref="MainActions.RemoveCallbacks(IMainActions)" />
     public interface IMainActions
     {
+        /// <summary>
+        /// Method invoked when associated input action "QSpell" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnQSpell(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ZSpell" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnZSpell(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ESpell" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnESpell(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RSpell" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRSpell(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Moove" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

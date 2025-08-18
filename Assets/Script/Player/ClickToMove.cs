@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class ClickToMove : MonoBehaviour
 {
-    public InputActionReference clickAction; // référence assignée dans l’inspecteur
-
+    // référence assignée dans l’inspecteur
+    public InputActionReference clickAction; 
     private NavMeshAgent agent;
 
     void Awake()

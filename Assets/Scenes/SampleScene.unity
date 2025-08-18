@@ -1540,7 +1540,7 @@ GameObject:
   - component: {fileID: 613125677}
   - component: {fileID: 613125683}
   - component: {fileID: 613125682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ennemi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2713,7 +2713,6 @@ GameObject:
   - component: {fileID: 1431405594}
   - component: {fileID: 1431405593}
   - component: {fileID: 1431405592}
-  - component: {fileID: 1431405596}
   - component: {fileID: 1431405597}
   - component: {fileID: 1431405598}
   m_Layer: 0
@@ -2815,18 +2814,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1431405596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431405591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d7bd1fcefcee84db044a88b68f0e94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1431405597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2988,6 +2975,7 @@ GameObject:
   - component: {fileID: 1515697210}
   - component: {fileID: 1515697209}
   - component: {fileID: 1515697211}
+  - component: {fileID: 1515697212}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3173,6 +3161,25 @@ MonoBehaviour:
     degatsCritique: 2
     niveau: 1
     regenVieParSeconde: 1
+--- !u!114 &1515697212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515697202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54206cbe7cf415e43921dd2f4ec180ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  inputSpell1: {fileID: 4025494226213503489, guid: 78ce29040e0d0f640a529eeb6a83df29, type: 3}
+  inputSpell2: {fileID: -2484587203632063510, guid: 78ce29040e0d0f640a529eeb6a83df29, type: 3}
+  inputSpell3: {fileID: 0}
+  inputSpell4: {fileID: 0}
 --- !u!1 &1597236703
 GameObject:
   m_ObjectHideFlags: 0

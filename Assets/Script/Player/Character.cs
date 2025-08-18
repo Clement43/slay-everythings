@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
@@ -6,6 +7,16 @@ public class Character : MonoBehaviour
 {
     public CharacterStats stats;
     private NavMeshAgent agent;
+    public ISpell[] spells;
+
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = stats.vitesseDeplacement;
+        spells = new ISpell[] {
+        new ConeAttack(),
+        };
+    }
 
     private void Update()
     {
@@ -13,11 +24,7 @@ public class Character : MonoBehaviour
         agent.speed = stats.vitesseDeplacement;
     }
 
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = stats.vitesseDeplacement;
-    }
+
 
 
     public void Attaquer(Character cible)

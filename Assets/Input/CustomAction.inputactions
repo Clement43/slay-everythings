@@ -6,13 +6,49 @@
             "id": "1483ad41-fadb-4282-bf7f-5ec074484756",
             "actions": [
                 {
+                    "name": "QSpell",
+                    "type": "Button",
+                    "id": "0015641b-d34d-4483-9b36-70b16028ba44",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ZSpell",
+                    "type": "Button",
+                    "id": "6520fc06-7b96-4f18-bba5-65d85eeb2c11",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ESpell",
+                    "type": "Button",
+                    "id": "75f0bf67-3f8d-42e8-93ad-be22c3b4a321",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RSpell",
+                    "type": "Button",
+                    "id": "22558618-6fdd-47a7-bf5e-3262b45b4fd3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Moove",
                     "type": "Button",
                     "id": "ab03b444-ca23-412c-ab61-3a8fda823628",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -24,6 +60,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Moove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "072c8b41-db70-4da7-808e-d41afff51a61",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60f417e0-b430-46f6-8481-7e046deca87f",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "549108d4-80a0-4d9c-9773-9dee35466aac",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ESpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7f1cd93-8eac-49d2-aaea-a72b53cbe77b",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RSpell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
