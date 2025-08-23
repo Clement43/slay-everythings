@@ -1,12 +1,13 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Unity.IL2CPP.CompilerServices;
+using UnityEngine;
 using UnityEngine.Bindings;
+using UnityEngine.InputSystem;
 using UnityEngine.Internal;
+using UnityEngine.TextCore.Text;
 using UnityEngineInternal;
 
 
@@ -25,11 +26,14 @@ public class ConeAttack : ISpell
 
     public ConeAttack(Character character) { 
     this.character = character;
-    }
+    cooldownDuration = 1 / character.stats.vitesseAttaque;
+
+}
 
 
-    public void AttackWithCooldown(Vector3 origin, Vector3 forward, LayerMask enemyLayer)
+public void AttackWithCooldown(Vector3 origin, Vector3 forward, LayerMask enemyLayer)
     {
+        cooldownDuration = 1 / character.stats.vitesseAttaque;
         // Vérifie si le cooldown est fini
         if (Time.time >= nextAttackTime)
         {

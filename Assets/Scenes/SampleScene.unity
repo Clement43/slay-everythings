@@ -1543,7 +1543,6 @@ GameObject:
   - component: {fileID: 613125680}
   - component: {fileID: 613125679}
   - component: {fileID: 613125678}
-  - component: {fileID: 613125677}
   - component: {fileID: 613125683}
   - component: {fileID: 613125682}
   m_Layer: 6
@@ -1553,33 +1552,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &613125677
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 613125674}
-  serializedVersion: 5
-  m_Mass: 1000
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &613125678
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1695,7 +1667,7 @@ MonoBehaviour:
     defenseMagique: 3
     vitesseAttaque: 1
     vitesseIncantation: 1
-    vitesseDeplacement: 0
+    vitesseDeplacement: 5
     chanceCritique: 0.1
     degatsCritique: 2
     niveau: 1
@@ -3136,7 +3108,6 @@ GameObject:
   - component: {fileID: 1515697205}
   - component: {fileID: 1515697204}
   - component: {fileID: 1515697208}
-  - component: {fileID: 1515697207}
   - component: {fileID: 1515697210}
   - component: {fileID: 1515697209}
   - component: {fileID: 1515697211}
@@ -3220,33 +3191,6 @@ Transform:
   - {fileID: 1494532899}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1515697207
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515697202}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &1515697208
 BoxCollider:
   m_ObjectHideFlags: 0
