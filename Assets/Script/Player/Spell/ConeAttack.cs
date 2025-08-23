@@ -1,6 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Unity.IL2CPP.CompilerServices;
+using UnityEngine.Bindings;
+using UnityEngine.Internal;
+using UnityEngineInternal;
+
 
 public class ConeAttack : ISpell
 {
@@ -13,6 +21,12 @@ public class ConeAttack : ISpell
 
     public float cooldownDuration = 1.5f; // en secondes 
     private float nextAttackTime = 0f;
+    private Character character;
+
+    public ConeAttack(Character character) { 
+    this.character = character;
+    }
+
 
     public void AttackWithCooldown(Vector3 origin, Vector3 forward, LayerMask enemyLayer)
     {
@@ -21,11 +35,6 @@ public class ConeAttack : ISpell
         {
             UseAttack(origin, forward, enemyLayer);
             nextAttackTime = Time.time + cooldownDuration; // relance le cooldown
-        }
-        else
-        {
-            float remaining = nextAttackTime - Time.time;
-            Debug.Log($"Attaque en cooldown : encore {remaining:F1} sec");
         }
     }
 
@@ -44,9 +53,19 @@ public class ConeAttack : ISpell
                 Ennemi enemy = col.GetComponent<Ennemi>();
                 if (enemy != null)
                 {
-                    enemy.stats.TakeDamage(damage);
+                    character.Attaquer(enemy, damage);
                 }
             }
         }
+    }
+
+    public Sprite getImage()
+    {
+        return Resources.Load<Sprite>("Image/Spell/coneAttack");
+    }
+
+    public float getCdSpell() {
+        float attackTime = (float)Math.Round(nextAttackTime - Time.time, 1);
+        return attackTime > 0 ? attackTime : 0;
     }
 }

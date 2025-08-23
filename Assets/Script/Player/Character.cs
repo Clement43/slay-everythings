@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
@@ -9,12 +10,12 @@ public class Character : MonoBehaviour
     private NavMeshAgent agent;
     public ISpell[] spells;
 
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = stats.vitesseDeplacement;
         spells = new ISpell[] {
-        new ConeAttack(),
+        new ConeAttack(this),
         };
     }
 
@@ -27,9 +28,9 @@ public class Character : MonoBehaviour
 
 
 
-    public void Attaquer(Character cible)
+    public void Attaquer(Ennemi cible, float degats)
     {
-        float degats = stats.degatsPhysiques;
+        degats += stats.degatsPhysiques;
 
         if (stats.EstCritique())
         {
