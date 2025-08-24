@@ -25,9 +25,6 @@ public class Character : MonoBehaviour
         agent.speed = stats.vitesseDeplacement;
     }
 
-
-
-
     public void Attaquer(Ennemi cible, float degats)
     {
         degats += stats.degatsPhysiques;
@@ -52,5 +49,9 @@ public class Character : MonoBehaviour
         }
 
         cible.stats.TakeDamage(degats, true);
+    }
+
+    public void StopMoovement() {
+        agent.ResetPath();
     }
 }

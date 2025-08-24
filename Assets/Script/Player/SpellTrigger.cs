@@ -52,11 +52,7 @@ public class SpellTrigger : MonoBehaviour
     {
         if (character.spells.Length > indexSpell)
         {
-            character.spells[indexSpell].AttackWithCooldown(
-                transform.position,
-                transform.forward,
-                enemyLayer
-            );
+            character.spells[indexSpell].AttackWithCooldown(enemyLayer);
         }
         else
         {

@@ -136,6 +136,15 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Stop"",
+                    ""type"": ""Button"",
+                    ""id"": ""114e1950-92b3-4019-af94-73150e924224"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -193,6 +202,17 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
                     ""action"": ""RSpell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ac62dda-8d71-472e-bb3c-0c628dd7b644"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
         m_Main_ESpell = m_Main.FindAction("ESpell", throwIfNotFound: true);
         m_Main_RSpell = m_Main.FindAction("RSpell", throwIfNotFound: true);
         m_Main_Moove = m_Main.FindAction("Moove", throwIfNotFound: true);
+        m_Main_Stop = m_Main.FindAction("Stop", throwIfNotFound: true);
     }
 
     ~@CustomAction()
@@ -291,6 +312,7 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_ESpell;
     private readonly InputAction m_Main_RSpell;
     private readonly InputAction m_Main_Moove;
+    private readonly InputAction m_Main_Stop;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
     /// </summary>
@@ -322,6 +344,10 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Main/Moove".
         /// </summary>
         public InputAction @Moove => m_Wrapper.m_Main_Moove;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/Stop".
+        /// </summary>
+        public InputAction @Stop => m_Wrapper.m_Main_Stop;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -363,6 +389,9 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
             @Moove.started += instance.OnMoove;
             @Moove.performed += instance.OnMoove;
             @Moove.canceled += instance.OnMoove;
+            @Stop.started += instance.OnStop;
+            @Stop.performed += instance.OnStop;
+            @Stop.canceled += instance.OnStop;
         }
 
         /// <summary>
@@ -389,6 +418,9 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
             @Moove.started -= instance.OnMoove;
             @Moove.performed -= instance.OnMoove;
             @Moove.canceled -= instance.OnMoove;
+            @Stop.started -= instance.OnStop;
+            @Stop.performed -= instance.OnStop;
+            @Stop.canceled -= instance.OnStop;
         }
 
         /// <summary>
@@ -464,5 +496,12 @@ public partial class @CustomAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Stop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStop(InputAction.CallbackContext context);
     }
 }

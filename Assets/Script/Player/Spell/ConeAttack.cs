@@ -1,14 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
-using UnityEngine.Bindings;
 using UnityEngine.InputSystem;
-using UnityEngine.Internal;
-using UnityEngine.TextCore.Text;
-using UnityEngineInternal;
+
 
 
 public class ConeAttack : ISpell
@@ -22,7 +15,7 @@ public class ConeAttack : ISpell
 
     public float cooldownDuration = 1.5f; // en secondes 
     private float nextAttackTime = 0f;
-    private Character character;
+    private readonly Character character;
 
     public ConeAttack(Character character) { 
     this.character = character;
@@ -31,20 +24,34 @@ public class ConeAttack : ISpell
 }
 
 
-public void AttackWithCooldown(Vector3 origin, Vector3 forward, LayerMask enemyLayer)
+public void AttackWithCooldown(LayerMask enemyLayer)
     {
         cooldownDuration = 1 / character.stats.vitesseAttaque;
         // Vérifie si le cooldown est fini
         if (Time.time >= nextAttackTime)
         {
-            UseAttack(origin, forward, enemyLayer);
+            UseAttack(character.transform.position, character.transform.forward, enemyLayer);
+            character.StopMoovement();
             nextAttackTime = Time.time + cooldownDuration; // relance le cooldown
         }
     }
 
-
-    public void UseAttack(Vector3 origin, Vector3 forward, LayerMask enemyLayer)
+    private void UseAttack(Vector3 origin, Vector3 forward, LayerMask enemyLayer)
     {
+        // 1. Raycast depuis la souris
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Plan au sol (Y = 0)
+        if (groundPlane.Raycast(ray, out float enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+
+            // 2. Faire tourner le perso vers la souris
+            Vector3 direction = (hitPoint - origin).normalized;
+            direction.y = 0; // Garder rotation uniquement sur l’axe Y
+            character.transform.rotation = Quaternion.LookRotation(direction);
+        }
+
+        // 3. Attaque dans le cône devant soi
         Collider[] colliders = Physics.OverlapSphere(origin, attackRange, enemyLayer);
 
         foreach (Collider col in colliders)

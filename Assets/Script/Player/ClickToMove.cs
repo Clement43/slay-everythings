@@ -6,6 +6,7 @@ public class ClickToMove : MonoBehaviour
 {
     // référence assignée dans l’inspecteur
     public InputActionReference clickAction; 
+    public InputActionReference stopAction; 
     private NavMeshAgent agent;
 
     void Awake()
@@ -17,13 +18,16 @@ public class ClickToMove : MonoBehaviour
     void OnEnable()
     {
         clickAction.action.performed += OnClick;
+        stopAction.action.performed += Stop;
         clickAction.action.Enable();
     }
 
     void OnDisable()
     {
         clickAction.action.performed -= OnClick;
+        stopAction.action.performed -= Stop;
         clickAction.action.Disable();
+        stopAction.action.Disable();
     }
 
     void Update()
@@ -44,5 +48,10 @@ public class ClickToMove : MonoBehaviour
         {
             agent.SetDestination(hit.point);
         }
+    }
+
+    private void Stop(InputAction.CallbackContext context)
+    {
+        agent.ResetPath();
     }
 }
