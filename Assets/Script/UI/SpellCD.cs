@@ -15,7 +15,10 @@ public class SpellCD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float cdSpell = character.spells[index].getCdSpell();
-        textMeshCD.text = cdSpell == 0 ? "" : cdSpell.ToString("F1");
+        if (character.spells.Length > index) {
+            float cdSpell = character.spells[index].getCdSpell();
+            textMeshCD.text = cdSpell == 0 ? "" : cdSpell.ToString("F1");
+        }
+
     }
 }

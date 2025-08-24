@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 
 
-public class ConeAttack : ISpell
+public class ConeAttack :Spell, ISpell
 {
     public float attackRange = 5f;
     public float coneAngle = 45f;
@@ -38,19 +38,8 @@ public void AttackWithCooldown(LayerMask enemyLayer)
 
     private void UseAttack(Vector3 origin, Vector3 forward, LayerMask enemyLayer)
     {
-        // 1. Raycast depuis la souris
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Plan au sol (Y = 0)
-        if (groundPlane.Raycast(ray, out float enter))
-        {
-            Vector3 hitPoint = ray.GetPoint(enter);
 
-            // 2. Faire tourner le perso vers la souris
-            Vector3 direction = (hitPoint - origin).normalized;
-            direction.y = 0; // Garder rotation uniquement sur l’axe Y
-            character.transform.rotation = Quaternion.LookRotation(direction);
-        }
-
+        this.LookFaceMouse(character);
         // 3. Attaque dans le cône devant soi
         Collider[] colliders = Physics.OverlapSphere(origin, attackRange, enemyLayer);
 

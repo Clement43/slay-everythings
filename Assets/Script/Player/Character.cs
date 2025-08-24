@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
         agent.speed = stats.vitesseDeplacement;
         spells = new ISpell[] {
         new ConeAttack(this),
+        new FireBallAttack(this),
         };
     }
 

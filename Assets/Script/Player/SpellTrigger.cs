@@ -50,7 +50,7 @@ public class SpellTrigger : MonoBehaviour
 
     private void CastAttack(int indexSpell)
     {
-        if (character.spells.Length > indexSpell)
+        if ( character.spells.Length > indexSpell)
         {
             character.spells[indexSpell].AttackWithCooldown(enemyLayer);
         }
