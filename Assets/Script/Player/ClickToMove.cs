@@ -4,15 +4,17 @@ using UnityEngine.InputSystem;
 
 public class ClickToMove : MonoBehaviour
 {
-    // référence assignée dans l’inspecteur
-    public InputActionReference clickAction; 
-    public InputActionReference stopAction; 
+    public InputActionReference clickAction;
+    public InputActionReference stopAction;
     private NavMeshAgent agent;
+    private Animator animator; // référence vers l’Animator
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
+
+        animator = GetComponent<Animator>(); // récupère l’Animator sur le même GameObject
     }
 
     void OnEnable()
@@ -20,6 +22,7 @@ public class ClickToMove : MonoBehaviour
         clickAction.action.performed += OnClick;
         stopAction.action.performed += Stop;
         clickAction.action.Enable();
+        stopAction.action.Enable();
     }
 
     void OnDisable()
@@ -32,17 +35,20 @@ public class ClickToMove : MonoBehaviour
 
     void Update()
     {
+        // Gestion de la rotation
         if (agent.velocity.sqrMagnitude > 0.1f)
         {
-            // Si le personnage se déplace, on lui fait face à la direction du mouvement
             Quaternion targetRotation = Quaternion.LookRotation(agent.velocity.normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
+
+        // Mise à jour de l’animation en fonction de la vitesse
+        float speed = agent.velocity.magnitude;
+        animator.SetFloat("Speed", speed);
     }
 
     private void OnClick(InputAction.CallbackContext context)
     {
-        
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit))
         {

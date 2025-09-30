@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class spellBar : MonoBehaviour
+public class SpellBar : MonoBehaviour
 {
 
-    public Character character;
+    public PlayerReference playerRef;
     public int index;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (character.spells.Length > index)
+        if (playerRef.player.spells.Length > index)
         {
-            Sprite spellSprite = character.spells[index].getImage();
+            Sprite spellSprite = playerRef.player.spells[index].getImage();
             Image img = GetComponent<Image>();
             img.sprite = spellSprite;
 

@@ -8,10 +8,12 @@ public class Character : MonoBehaviour
 {
     public CharacterStats stats;
     private NavMeshAgent agent;
+    public PlayerReference playerRef;
     public ISpell[] spells;
 
     void Awake()
     {
+        playerRef.player = this;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = stats.vitesseDeplacement;
         spells = new ISpell[] {
