@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class CharacterStats
@@ -23,6 +25,8 @@ public class CharacterStats
 
     public float regenVieParSeconde = 1f;
 
+    public Action deathFnc = null;
+
     // Méthode pour recevoir des dégâts
     public void TakeDamage(float degats, bool estMagique = false)
     {
@@ -43,8 +47,10 @@ public class CharacterStats
 
     private void Mourir()
     {
-        Debug.Log("Le personnage est mort.");
-        // Tu peux appeler un event ou notifier un GameManager ici
+        if (deathFnc is not null)
+        {
+            deathFnc();
+        }
     }
 
     public bool EstCritique()

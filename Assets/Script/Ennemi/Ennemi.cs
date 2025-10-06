@@ -15,7 +15,8 @@ public class Ennemi : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = stats.vitesseDeplacement;
-
+        // We assign the specific death method
+        stats.deathFnc = Death;
         // Recherche automatique du joueur par son tag
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -67,4 +68,8 @@ public class Ennemi : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        Destroy(gameObject);
+    }
 }

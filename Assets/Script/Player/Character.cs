@@ -1,14 +1,13 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.TextCore.Text;
 
 public class Character : MonoBehaviour
 {
     public CharacterStats stats;
     private NavMeshAgent agent;
     public PlayerReference playerRef;
+    public Animator animator;
     public ISpell[] spells;
 
     void Awake()
@@ -16,6 +15,7 @@ public class Character : MonoBehaviour
         playerRef.player = this;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = stats.vitesseDeplacement;
+        animator = GetComponent<Animator>();
         spells = new ISpell[] {
         new ConeAttack(this),
         new FireBallAttack(this),
@@ -54,7 +54,13 @@ public class Character : MonoBehaviour
         cible.stats.TakeDamage(degats, true);
     }
 
+
     public void StopMoovement() {
         agent.ResetPath();
+    }
+
+    public void Death()
+    {
+        throw new NotImplementedException();
     }
 }
